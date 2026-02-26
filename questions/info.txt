@@ -1,0 +1,2 @@
+school.name=pkalogerop
+school.password=xy$xYPTirJmRNSZt@JzDF14*ra!&0%GepVWp.

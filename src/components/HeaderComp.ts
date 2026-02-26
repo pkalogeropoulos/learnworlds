@@ -13,7 +13,7 @@ export class HeaderComp {
   constructor(page: Page) {
     this.page = page;
 
-    this.loginButton = page.getByRole('link', { name: /log in|login|sign in/i });
+    this.loginButton = page.getByRole('link', { name: "Login" });
 
     this.accessYourSchoolButton = page
       .getByRole('link', { name: /access (your )?school/i })

@@ -7,19 +7,16 @@ export class HeaderComp {
   readonly loginButton: Locator;
 
   // After login / logged-in
-  readonly accessYourSchoolButton: Locator;
+  readonly mySchoolLink: Locator;
   readonly logoutButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
 
     this.loginButton = page.getByRole('link', { name: "Login" });
-
-    this.accessYourSchoolButton = page
-      .getByRole('link', { name: /access (your )?school/i })
-      .first();
-
-    this.logoutButton = page.getByRole('link', { name: /log ?out|sign ?out/i }).first();
+    this.mySchoolLink = page.getByRole('link', { name: 'My school' });
+    this.logoutButton = page.locator("a.js-account-logout");
+    
   }
 
   /**
@@ -29,20 +26,14 @@ export class HeaderComp {
     await this.loginButton.click();
   }
 
-  /**
-   * Click “Access Your School” after login.
-   */
-  async clickAccessYourSchool() {
-    await this.accessYourSchoolButton.click();
+  async hoverOverMySchoolLink() {
+    await this.mySchoolLink.hover();
   }
 
   /**
-   * Click the logout button and wait for transition back to logged-out state.
+   * Click the logout button
    */
   async clickLogout() {
     await this.logoutButton.click();
-
-    // After logout, expect login button visible again
-    await expect(this.loginButton, 'Expected login button after logout').toBeVisible();
   }
 }

@@ -8,6 +8,9 @@
     "paths": {
       "@pages": ["src/pages"],
       "@pages/*": ["src/pages/*"],
+      "@business": ["src/business"],
+      "@business/*": ["src/business/*"],
+      "@components": ["src/components"],
       "@components/*": ["src/components/*"]
     },
     "types": ["node", "@playwright/test"]

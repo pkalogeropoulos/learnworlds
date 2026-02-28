@@ -1,12 +1,31 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+/*
+Used for local testing and for demonstration purposes. In a more real scenario other more robust
+options should be used for user handling
+*/
+dotenv.config({ path: '.env.local' });
+
+
+  export function getBaseURL(): string {
+    let baseURL: string | undefined;
+
+    // Set the environment to "production" if not defined
+    if (!process.env.ENVIRONMENT) {
+      process.env.ENVIRONMENT = "production";
+    }
+
+    if (process.env.ENVIRONMENT === "production") {
+      baseURL = "https://www.learnworlds.com";
+    }
+
+    //TODO: add support for other envs such as dev, staging, etc - for now we keep it simple
+
+    return baseURL || '';
+}
+
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -26,13 +45,15 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: "https://www.learnworlds.com",
+    baseURL: getBaseURL(),
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: "only-on-failure",
     video: "retain-on-failure",
   },
+
+  expect: { timeout: 10_000 },
 
   /* Configure projects for major browsers */
   projects: [

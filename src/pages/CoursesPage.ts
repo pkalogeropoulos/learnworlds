@@ -30,4 +30,10 @@ export class CoursesPage {
     async clickCheckoutButton() {
         await this.checkoutButton.click();
     }
+
+    async proceedToCheckoutForCourseWithId(courseId: string): Promise<void> {
+        await this.addToCartCourseById(courseId);
+        await this.hoverOverCartIcon();
+        await this.clickCheckoutButton();
+    }
 }

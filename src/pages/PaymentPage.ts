@@ -1,4 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
+import {User} from "@config";
 
 /**
  * LearnWorlds School Payment Page
@@ -11,16 +12,6 @@ import { expect, Locator, Page } from "@playwright/test";
  */
 export class PaymentPage {
   readonly page: Page;
-
-
-  // ======= Auth Area (Login / Sign up / Forgot) =======
-  readonly loginSectionHeading: Locator;
-  readonly signupSectionHeading: Locator;
-
-  // Login form
-  readonly loginEmailInput: Locator;
-  readonly loginPasswordInput: Locator;
-  readonly loginButton: Locator;
 
   // Signup form (a lot of fields exist; keep core ones + extend as needed)
   readonly signupFirstNameInput: Locator;
@@ -64,6 +55,13 @@ export class PaymentPage {
 
   async setPassword(password: string): Promise<void> {
     await this.signupPasswordInput.fill(password);
+  }
+
+  async setUserData(user: User): Promise<void> {
+    await this.setFirstName(user.name);
+    await this.setLastName(user.surname);
+    await this.setEmail(user.email);
+    await this.setPassword(user.password);
   }
 
   async setCoupon(code: string): Promise<void> {

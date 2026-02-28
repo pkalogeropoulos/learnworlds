@@ -11,7 +11,9 @@
       "@business": ["src/business"],
       "@business/*": ["src/business/*"],
       "@components": ["src/components"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@config": ["src/config"],
+      "@config/*": ["src/config/*"]
     },
     "types": ["node", "@playwright/test"]
   },

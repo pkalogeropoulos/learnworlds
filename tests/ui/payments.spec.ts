@@ -1,32 +1,20 @@
-import { test, expect } from "@playwright/test";
-import * as pages from "@pages";
-import { NavigationHandler, CookieHandler } from "@business";
+import { test, expect } from "../fixtures/test";
+import { PaymentAssertions } from "tests/assertions/PaymentAssertions";
+import { Config } from "../../src/config/Config";
 
-
-test.describe("Payments tests with cart disabled", () => {
-    test("Perform simple payment happy path without coupon", async ({ page }) => {
-        const navigation = new NavigationHandler(page);
-        await navigation.navigateToSchool(process.env.DEMO_SCHOOL_NAME!);
+test.describe("Payments tests with cart disabled (go straight to payment)", () => {
+    test("Perform simple payment happy path without coupon", async ({ page, navigation, schoolHomePage, coursesPage, paymentPage, thankYouPage }) => {
+        await navigation.navigateToSchool(Config.getTestSchoolName());
         
-        const schoolHomePage = new pages.SchoolHomePage(page);
         await schoolHomePage.clickCoursesLink();
+        await coursesPage.proceedToCheckoutForCourseWithId(Config.getTestCourseId());
 
-        const coursePage = new pages.CoursesPage(page);
-        await coursePage.addToCartCourseById("699e693a2a1dfdd7190737f2");
-        await coursePage.hoverOverCartIcon();
-        await coursePage.clickCheckoutButton();
-
-        const paymentPage = new pages.PaymentPage(page);
-        await paymentPage.setFirstName("test name");
-        await paymentPage.setLastName("test surname");
-        await paymentPage.setEmail(process.env.DEMO_NAME_02!);
-        await paymentPage.setPassword(process.env.DEMO_PASS_02!);
+        await paymentPage.setUserData(Config.getSecondaryTestUser());
         await paymentPage.clickBuy();
-        
-        const thankYouPage = new pages.ThankYouPage(page);
-        await expect.soft(thankYouPage.thankYouHeading).toHaveText("Thank you for your purchase!");
-        await expect.soft(thankYouPage.thankYouMainText).toHaveText("Your purchase was completed successfully.");
-        await expect.soft(thankYouPage.downloadInvoiceLink).toBeVisible();
+
+        //more assertions could be performed here (is the invoice created correctly? does the url contain the correct info etc).
+        //For now we just check a few text messages in the ui
+        await PaymentAssertions.verifyThankYouPage(thankYouPage);
     });
 
 });

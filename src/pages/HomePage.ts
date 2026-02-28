@@ -1,16 +1,10 @@
-import { expect, Locator, Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 
 export class HomePage {
   readonly page: Page;
 
-  // Key areas
-  readonly heroHeading: Locator;
-
   constructor(page: Page) {
     this.page = page;
-
-    // “Initial page” essentials: heading + primary CTA.
-    this.heroHeading = page.getByRole("heading").first();
   }
 
   async goto(): Promise<void> {

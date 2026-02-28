@@ -22,6 +22,8 @@ export class PaymentPage {
   readonly couponInput: Locator;
   readonly applyCouponButton: Locator;
 
+  readonly totalAmount: Locator;
+
   readonly buyButton: Locator; 
 
   constructor(page: Page) {
@@ -37,6 +39,7 @@ export class PaymentPage {
     this.couponInput = page.getByRole('textbox', { name: 'Enter code' });
     this.applyCouponButton = page.getByRole('button', { name: 'Redeem' });
 
+    this.totalAmount = page.locator("#component_1745875797532_344 > div > div.order-summary.mt-2rem > div.flex.a-i-c.j-c-sb > div:nth-child(2) > strong");
     this.buyButton = page.getByRole('button', { name: 'Buy' });
   }
 
@@ -65,13 +68,16 @@ export class PaymentPage {
   }
 
   async setCoupon(code: string): Promise<void> {
-    await expect(this.couponInput).toBeVisible();
     await this.couponInput.fill(code);
   }
 
-  async clickRedeemCoupon(code: string): Promise<void> {
-    await this.setCoupon(code);
+  async clickRedeemCoupon(): Promise<void> {
     await this.applyCouponButton.click();
+  }
+
+  async applyCoupon(code: string):Promise<void> {
+    await this.setCoupon(code);
+    await this.clickRedeemCoupon();
   }
 
   async clickBuy(): Promise<void> {

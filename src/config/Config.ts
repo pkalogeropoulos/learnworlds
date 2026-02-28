@@ -32,4 +32,12 @@ export class Config {
     static getTestCourseId(): string {
         return process.env.DEMO_COURSE_ID?.toString()!;
     }
+
+    static getCouponCode(): string {
+        return process.env.DEMO_COUPON_NAME?.toString()!;
+    }
+
+    static getDiscountCouponPrice(): string {
+        return process.env.DEMO_COUPON_DISCOUNTED_PRICE?.toString()!;
+    }
 }

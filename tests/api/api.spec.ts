@@ -2,6 +2,8 @@ import { test, expect } from "../fixtures/test";
 import { request, APIRequestContext } from "@playwright/test";
 import { Config } from "../../src/config/Config";
 import { UserPayloadFactory } from "src/api/UserPayloadFactory";
+import * as allure from "allure-js-commons";
+
 
 test.describe("Api tests", () => {
     const admin = Config.getMainTestUser();
@@ -14,45 +16,50 @@ test.describe("Api tests", () => {
      * Since this is a standalone api test, we can do this in beforeAll method
      */
     test.beforeAll("Login via ui", async ({ page, session }) => {
-        await session.loginFromSchoolPage(admin.email, admin.password);
-        await expect(page).toHaveURL(/\/author/i);
+        allure.step("Login via ui and set the storageState", async () => {
+            await session.loginFromSchoolPage(admin.email, admin.password);
+            await expect(page).toHaveURL(/\/author/i);
 
-        await page.context().storageState({ path: storageStatePath });
+            await page.context().storageState({ path: storageStatePath });
+        });
+
     });
 
     test("Create a user via api call", async () => {
-        apiContext = await request.newContext({
-            baseURL: Config.getDemoSchoolUrl(),
-            storageState: storageStatePath,
-            extraHTTPHeaders: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        });
+        allure.step("Create the user in POST/api/author/create_user and assert the response", async () => {
+            apiContext = await request.newContext({
+                baseURL: Config.getDemoSchoolUrl(),
+                storageState: storageStatePath,
+                extraHTTPHeaders: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+            });
 
 
-        const response = await apiContext.post("/api/author/create_user", {
-            data: UserPayloadFactory.getDefaultUserPayload()
-        });
+            const response = await apiContext.post("/api/author/create_user", {
+                data: UserPayloadFactory.getDefaultUserPayload()
+            });
 
-        const json = await response.json();
-        console.log("JSON:", json);
+            const json = await response.json();
+            console.log("JSON:", json);
 
-        /*
-        The response should be something like:
-        {
-            user: { id: '69a459c91b1f7bcaa605d198', created: 1772378568.989671 },
-            errors: [],
-            success: true
-        }
-    
-        we check that the success is true
-        */
-        expect(json.success, JSON.stringify(json)).toBeTruthy();
+            /*
+            The response should be something like:
+            {
+                user: { id: '69a459c91b1f7bcaa605d198', created: 1772378568.989671 },
+                errors: [],
+                success: true
+            }
+        
+            we check that the success is true
+            */
+            expect(json.success, JSON.stringify(json)).toBeTruthy();
+        })
 
     });
 
-    test.afterAll(async() => {
+    test.afterAll(async () => {
         await apiContext.dispose();
     });
 

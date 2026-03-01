@@ -1,4 +1,4 @@
-name: Playwright E2E
+name: Playwright learnworlds tests
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  e2e:
+  playwright:
     runs-on: ubuntu-latest
     timeout-minutes: 60
 

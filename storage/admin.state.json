@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "_cfuvid",
-      "value": "cClFod4j2CjsxEWfDO350s7NqK4PW7Bs_IuiZ_mlVPY-1772358277857-0.0.1.1-604800000",
+      "value": "8f0H7oNITcbbfE4JBD6guJyar__eoKj9wwg_5gAABDw-1772378563552-0.0.1.1-604800000",
       "domain": ".learnworlds.com",
       "path": "/",
       "expires": -1,
@@ -15,27 +15,27 @@
       "value": "FPID2.2.tvBABPJB0sobfg5gCg3ZBeD32zsYV%2FbuiHSZk%2Fu3uU0%3D.1772357048",
       "domain": ".learnworlds.com",
       "path": "/",
-      "expires": 1806918278.046968,
+      "expires": 1806938565.015385,
       "httpOnly": true,
       "secure": true,
       "sameSite": "Lax"
     },
     {
       "name": "lw_tokens",
-      "value": "%7B%22access_token%22%3A%22W8ihJEwfWupduMCsDqoS5wOl1h9w36Vmp7NJ8hNJ%22%2C%22token_type%22%3A%22Bearer%22%2C%22expires_in%22%3A604800%2C%22refresh_token%22%3A%227ZevWguICLRFzcX8Gi0AQEM7ZdSzqxyeEJXXD4BF%22%7D",
+      "value": "%7B%22access_token%22%3A%2251iaUlXVyNEPR85aSeCMDdSigiZN98laeStRNVQo%22%2C%22token_type%22%3A%22Bearer%22%2C%22expires_in%22%3A604800%2C%22refresh_token%22%3A%22Ycbf05Hdj6vRs0sBIi4ADg0xBuYYvdcEqddRJfFS%22%7D",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1772963081.019822,
+      "expires": 1772983369.215206,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "slim_session",
-      "value": "HdN97VvaMxa2aSuNMbjBprZfcxNlx83RJQIkwIIe",
+      "value": "GFteGPNhGqBjSIrUwjgZePV5PhNWoYRNdPdQW11G",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1772574281.020032,
+      "expires": 1772594569.215671,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
@@ -45,7 +45,7 @@
       "value": "%7B%22aliased%22%3Atrue%7D",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1788255881.019976,
+      "expires": 1788276169.215517,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -57,7 +57,7 @@
       "localStorage": [
         {
           "name": "anonymous_token",
-          "value": "{\"token\":\"69a40a866d29aeadb8fdanon\",\"lastAccessed\":1772358279166}"
+          "value": "{\"token\":\"69a459c6d686ab698d40anon\",\"lastAccessed\":1772378567261}"
         },
         {
           "name": "lwUserCart",

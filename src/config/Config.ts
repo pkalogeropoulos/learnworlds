@@ -50,4 +50,12 @@ export class Config {
     static getDiscountCouponPrice(): string {
         return process.env.DEMO_COUPON_DISCOUNTED_PRICE?.toString()!;
     }
+
+    static getStorageStatePath() {
+        return process.env.STORAGE_STATE_PATH?.toString()!;
+    }
+
+    static getDemoSchoolUrl() {
+        return process.env.DEMO_SCHOOL_URL?.toString()!;
+    }
 }

@@ -1,5 +1,5 @@
 import { test, expect, request } from "@playwright/test";
-import { AuthorApiClient } from "../../src/api/AuthorApiClient";
+import { AuthorApiClient } from "../../src/api/ApiClient";
 
 test("create user via API as admin", async () => {
   const apiContext = await request.newContext({

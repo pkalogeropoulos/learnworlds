@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "_cfuvid",
-      "value": "8f0H7oNITcbbfE4JBD6guJyar__eoKj9wwg_5gAABDw-1772378563552-0.0.1.1-604800000",
+      "value": "TwBez6m5mppUzVXW7n4LAi4Qs7kjAr93ZaOlJ674i.s-1772394169370-0.0.1.1-604800000",
       "domain": ".learnworlds.com",
       "path": "/",
       "expires": -1,
@@ -11,31 +11,21 @@
       "sameSite": "None"
     },
     {
-      "name": "FPID",
-      "value": "FPID2.2.tvBABPJB0sobfg5gCg3ZBeD32zsYV%2FbuiHSZk%2Fu3uU0%3D.1772357048",
-      "domain": ".learnworlds.com",
-      "path": "/",
-      "expires": 1806938565.015385,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "Lax"
-    },
-    {
       "name": "lw_tokens",
-      "value": "%7B%22access_token%22%3A%2251iaUlXVyNEPR85aSeCMDdSigiZN98laeStRNVQo%22%2C%22token_type%22%3A%22Bearer%22%2C%22expires_in%22%3A604800%2C%22refresh_token%22%3A%22Ycbf05Hdj6vRs0sBIi4ADg0xBuYYvdcEqddRJfFS%22%7D",
+      "value": "%7B%22access_token%22%3A%22UHsJPWMrKwcvngIHJ53nK5kpyZvVtPQqGqeYlQwS%22%2C%22token_type%22%3A%22Bearer%22%2C%22expires_in%22%3A604800%2C%22refresh_token%22%3A%22OFTe5WznjOWHKLPX9uGXiUpKiBzVQ6mb997v15OQ%22%7D",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1772983369.215206,
+      "expires": 1772998976.141452,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "slim_session",
-      "value": "GFteGPNhGqBjSIrUwjgZePV5PhNWoYRNdPdQW11G",
+      "value": "E31PovZRGegp9UO4qk7ZMifxwwRd9s9CGvXYTAlK",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1772594569.215671,
+      "expires": 1772610176.141602,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
@@ -45,10 +35,20 @@
       "value": "%7B%22aliased%22%3Atrue%7D",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1788276169.215517,
+      "expires": 1788291776.56032,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
+    },
+    {
+      "name": "school",
+      "value": "{%22ping%22:1}",
+      "domain": "pkalogerop.learnworlds.com",
+      "path": "/",
+      "expires": 1772437378,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
     }
   ],
   "origins": [
@@ -56,8 +56,20 @@
       "origin": "https://pkalogerop.learnworlds.com",
       "localStorage": [
         {
-          "name": "anonymous_token",
-          "value": "{\"token\":\"69a459c6d686ab698d40anon\",\"lastAccessed\":1772378567261}"
+          "name": "__mpq_c0b386e6d33065929cd9d06520ea0269_pp:X",
+          "value": "1772394178536|0.15627558872229763"
+        },
+        {
+          "name": "__mpq_c0b386e6d33065929cd9d06520ea0269_pp",
+          "value": "[{\"id\":\"ee7ayii2gqqr9z90\",\"flushAfter\":1772394188533,\"payload\":{\"$set\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$browser_version\":145,\"$email\":\"p.kalogeropouloss@gmail.com\",\"$name\":\"pkalogerop\",\"$created\":\"2026-02-25T03:08:43.000Z\",\"pagebuilder\":\"v2\",\"new_product\":true},\"$token\":\"c0b386e6d33065929cd9d06520ea0269\",\"$distinct_id\":\"794bf1d6-0324-4154-88eb-e6c59a5f10cf\",\"$device_id\":\"920712da-ad13-4c0d-830a-11a2d2c4006b\",\"$user_id\":\"794bf1d6-0324-4154-88eb-e6c59a5f10cf\"}}]"
+        },
+        {
+          "name": "bugsnag-anonymous-id",
+          "value": "cmm85qcp7000038hxon32pl3p"
+        },
+        {
+          "name": "__mpq_c0b386e6d33065929cd9d06520ea0269_ev",
+          "value": "[{\"id\":\"uwojfzvk9zbxcppk\",\"flushAfter\":1772394188529,\"payload\":{\"event\":\"$create_alias\",\"properties\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$referrer\":\"https://pkalogerop.learnworlds.com/\",\"$referring_domain\":\"pkalogerop.learnworlds.com\",\"$current_url\":\"https://pkalogerop.learnworlds.com/author/dashboard\",\"$browser_version\":145,\"$screen_height\":720,\"$screen_width\":1280,\"mp_lib\":\"web\",\"$lib_version\":\"2.75.0\",\"$insert_id\":\"1k87ujw3vfk7z0id\",\"time\":1772394178.528,\"distinct_id\":\"794bf1d6-0324-4154-88eb-e6c59a5f10cf\",\"$device_id\":\"920712da-ad13-4c0d-830a-11a2d2c4006b\",\"$initial_referrer\":\"https://pkalogerop.learnworlds.com/\",\"$initial_referring_domain\":\"pkalogerop.learnworlds.com\",\"alias\":\"p.kalogeropouloss@gmail.com\",\"token\":\"c0b386e6d33065929cd9d06520ea0269\"}}},{\"id\":\"nm2urny435xt70dw\",\"flushAfter\":1772394188540,\"payload\":{\"event\":\"$identify\",\"properties\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$referrer\":\"https://pkalogerop.learnworlds.com/\",\"$referring_domain\":\"pkalogerop.learnworlds.com\",\"$current_url\":\"https://pkalogerop.learnworlds.com/author/dashboard\",\"$browser_version\":145,\"$screen_height\":720,\"$screen_width\":1280,\"mp_lib\":\"web\",\"$lib_version\":\"2.75.0\",\"$insert_id\":\"ltltp0imc2c591bv\",\"time\":1772394178.539,\"distinct_id\":\"p.kalogeropouloss@gmail.com\",\"$device_id\":\"920712da-ad13-4c0d-830a-11a2d2c4006b\",\"$initial_referrer\":\"https://pkalogerop.learnworlds.com/\",\"$initial_referring_domain\":\"pkalogerop.learnworlds.com\",\"releaseVersion\":\"v4.34.2\",\"lw_client\":\"699e67bbf4e70d417fb71def\",\"$user_id\":\"p.kalogeropouloss@gmail.com\",\"$anon_distinct_id\":\"794bf1d6-0324-4154-88eb-e6c59a5f10cf\",\"token\":\"c0b386e6d33065929cd9d06520ea0269\"}}}]"
         },
         {
           "name": "lwUserCart",

@@ -1,27 +1,55 @@
-name: Playwright Tests
+name: Playwright E2E
+
 on:
   push:
     branches: [ main, master ]
   pull_request:
-    branches: [ main, master ]
+
 jobs:
-  test:
-    timeout-minutes: 60
+  e2e:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    env:
+      # Use GitHub Secrets for sensitive values, let's keep it simple for now with local runs
+
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers (with deps)
+        run: npx playwright install --with-deps
+
+      - name: Run tests
+        run: npx playwright test
+
+      # ---- Optional: generate Allure HTML report (if you enabled Allure) ----
+      - name: Generate Allure report
+        if: always()
+        run: npx allure generate allure-results --clean -o allure-report
+
+      # ---- Upload artifacts (so you can download reports from the job) ----
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 14
+
+      - name: Upload Allure report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          retention-days: 14

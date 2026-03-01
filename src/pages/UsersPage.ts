@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test"
+import { Locator, Page, expect } from "@playwright/test"
 
 export class UsersPage {
     readonly page: Page;
@@ -7,6 +7,7 @@ export class UsersPage {
     readonly userCourses: Locator;
     readonly products: Locator;
     readonly transactions: Locator;
+    readonly addUserButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -15,6 +16,7 @@ export class UsersPage {
         this.userCourses = page.locator("div.metrics-item div.metric-value").nth(1);
         this.products = page.getByTestId("tab-products");
         this.transactions = page.getByTestId("tab-transactions");
+        this.addUserButton = page.getByText("Add user");
     }
 
     private readonly dynamicSelectors = {
@@ -38,5 +40,10 @@ export class UsersPage {
 
     async clickTransactionsTab() {
         await this.transactions.click();
+    }
+
+    async waitForPageToLoad() {
+        const frame = await this.page.frameLocator("#contentHolder");
+        await expect(frame.locator(this.addUserButton)).toBeVisible();
     }
 }

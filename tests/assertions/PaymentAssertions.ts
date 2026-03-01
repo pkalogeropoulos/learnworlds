@@ -3,6 +3,11 @@ import * as pages from "@pages";
 
 export class PaymentAssertions {
 
+    /**
+     * more assertions could be performed here (is the invoice created correctly? does the url contain the correct info etc).
+       For now we just check a few text messages in the ui
+     * @param thankYouPage 
+     */
     static async verifyThankYouPage(thankYouPage: pages.ThankYouPage) {
         //these assertion texts could be in different location and not hardcoded here, depends on the structure of 
         //our codebase and if we support localisation

@@ -1,10 +1,10 @@
 import { test as base, expect, Page } from "@playwright/test";
 import * as business from "@business";
 import * as pages from "@pages";
-import * as config from "@config";
 
 type Fixtures = {
   navigation: business.NavigationHandler;
+  session: business.SessionHandler;
   schoolHomePage: pages.SchoolHomePage;
   coursesPage: pages.CoursesPage;
   paymentPage: pages.PaymentPage;
@@ -56,6 +56,10 @@ export const test = base.extend<Fixtures>({
 
   thankYouPage: async ({ page }, use) => {
     await use(new pages.ThankYouPage(page));
+  },
+
+  session: async ({ page }, use) => {
+    await use(new business.SessionHandler(page));
   },
 });
 

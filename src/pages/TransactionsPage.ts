@@ -16,6 +16,7 @@ export class TransactionsPage {
 
     async getLastTransactionStatus():Promise<string> {
         const frame = await this.page.frameLocator("#contentHolder");
+        console.log(await frame.getByTitle);
         return await frame.locator("tr.authoring-table-row.cursor-pointer").nth(1).locator("td.authoring-table-cell").nth(1).innerText();
     }
 

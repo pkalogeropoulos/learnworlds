@@ -1,0 +1,69 @@
+{
+  "cookies": [
+    {
+      "name": "_cfuvid",
+      "value": "cClFod4j2CjsxEWfDO350s7NqK4PW7Bs_IuiZ_mlVPY-1772358277857-0.0.1.1-604800000",
+      "domain": ".learnworlds.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "FPID",
+      "value": "FPID2.2.tvBABPJB0sobfg5gCg3ZBeD32zsYV%2FbuiHSZk%2Fu3uU0%3D.1772357048",
+      "domain": ".learnworlds.com",
+      "path": "/",
+      "expires": 1806918278.046968,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "lw_tokens",
+      "value": "%7B%22access_token%22%3A%22W8ihJEwfWupduMCsDqoS5wOl1h9w36Vmp7NJ8hNJ%22%2C%22token_type%22%3A%22Bearer%22%2C%22expires_in%22%3A604800%2C%22refresh_token%22%3A%227ZevWguICLRFzcX8Gi0AQEM7ZdSzqxyeEJXXD4BF%22%7D",
+      "domain": "pkalogerop.learnworlds.com",
+      "path": "/",
+      "expires": 1772963081.019822,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "slim_session",
+      "value": "HdN97VvaMxa2aSuNMbjBprZfcxNlx83RJQIkwIIe",
+      "domain": "pkalogerop.learnworlds.com",
+      "path": "/",
+      "expires": 1772574281.020032,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__mp_aliased",
+      "value": "%7B%22aliased%22%3Atrue%7D",
+      "domain": "pkalogerop.learnworlds.com",
+      "path": "/",
+      "expires": 1788255881.019976,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://pkalogerop.learnworlds.com",
+      "localStorage": [
+        {
+          "name": "anonymous_token",
+          "value": "{\"token\":\"69a40a866d29aeadb8fdanon\",\"lastAccessed\":1772358279166}"
+        },
+        {
+          "name": "lwUserCart",
+          "value": "{\"items\":[],\"lineItems\":[],\"coupons\":[],\"totals\":null}"
+        }
+      ]
+    }
+  ]
+}

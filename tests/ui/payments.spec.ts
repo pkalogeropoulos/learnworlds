@@ -1,7 +1,6 @@
 import { test, expect } from "../fixtures/test";
 import { PaymentAssertions } from "tests/assertions/PaymentAssertions";
 import { Config } from "../../src/config/Config";
-import { config } from "node:process";
 
 test.describe("Payments tests with cart disabled (go straight to payment)", () => {
 

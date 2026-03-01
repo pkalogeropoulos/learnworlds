@@ -4,3 +4,7 @@ export * from "./SchoolHomePage";
 export * from "./CoursesPage";
 export * from "./PaymentPage";
 export * from "./ThankYouPage";
+export * from "./UsersPage";
+export * from "./ProductsPage";
+export * from "./AdminPage";
+export * from "./TransactionsPage";

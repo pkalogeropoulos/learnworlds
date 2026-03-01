@@ -9,6 +9,7 @@ export class HeaderComp {
   // After login / logged-in
   readonly mySchoolLink: Locator;
   readonly logoutButton: Locator;
+  readonly logoutFromThankyouPage: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -16,6 +17,7 @@ export class HeaderComp {
     this.loginButton = page.getByRole('link', { name: "Login" });
     this.mySchoolLink = page.getByRole('link', { name: 'My school' });
     this.logoutButton = page.locator("a.js-account-logout");
+    this.logoutFromThankyouPage = page.getByText("Sign out");
     
   }
 
@@ -35,5 +37,9 @@ export class HeaderComp {
    */
   async clickLogout() {
     await this.logoutButton.click();
+  }
+
+  async clickLogoutFromThankYouPage() {
+    await this.logoutFromThankyouPage.click();
   }
 }

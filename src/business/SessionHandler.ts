@@ -36,6 +36,7 @@ export class SessionHandler {
         await schoolHomePage.setUsername(username);
         await schoolHomePage.setPassword(password);
         await schoolHomePage.clickLoginButton();
+        await this.page.waitForTimeout(3000);//not the best option, but if I do not put that wait here, the login is not performed correctly. Not sure why, would like to debug more.
     }
 
     async logout() {
@@ -47,7 +48,8 @@ export class SessionHandler {
         await header.clickLogout();
     }
 
-    async logoutFromSchoolSection() {
-
+    async logoutFromThankYouPage() {
+        const header = new components.HeaderComp(this.page);
+        await header.clickLogoutFromThankYouPage();
     }
 }

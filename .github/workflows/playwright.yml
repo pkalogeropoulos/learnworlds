@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
 
-    env:
-      # Use GitHub Secrets for sensitive values, let's keep it simple for now with local runs
+    # this is where we could use specific values for our tests, let's keep it simple for now with local runs
+    #env:
+      
 
     steps:
       - name: Checkout

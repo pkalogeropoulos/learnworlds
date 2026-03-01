@@ -16,7 +16,7 @@ test.describe("Api tests", () => {
      * Since this is a standalone api test, we can do this in beforeAll method
      */
     test.beforeAll("Login via ui", async ({ page, session }) => {
-        allure.step("Login via ui and set the storageState", async () => {
+        await allure.step("Login via ui and set the storageState", async () => {
             await session.loginFromSchoolPage(admin.email, admin.password);
             await expect(page).toHaveURL(/\/author/i);
 
@@ -25,7 +25,7 @@ test.describe("Api tests", () => {
     });
 
     test("Create a user via api call", async () => {
-        allure.step("Create the user in POST/api/author/create_user and assert the response", async () => {
+        await allure.step("Create the user in POST/api/author/create_user and assert the response", async () => {
             apiContext = await request.newContext({
                 baseURL: TestParams.getDemoSchoolUrl(),
                 storageState: storageStatePath,

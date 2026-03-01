@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test:staging": "cross-env ENVIRONMENT=staging playwright test",
-    "test:prod": "cross-env ENVIRONMENT=production playwright test"
+    "test:prod": "cross-env ENVIRONMENT=production playwright test",
+    "test:allure": "playwright test",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +17,9 @@
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.3.0",
+    "allure-commandline": "^2.37.0",
+    "allure-js-commons": "^3.5.0",
+    "allure-playwright": "^3.5.0",
     "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
     "zod": "^4.3.6"

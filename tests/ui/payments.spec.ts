@@ -2,6 +2,7 @@ import { test, expect } from "../fixtures/test";
 import { PaymentAssertions } from "tests/assertions/PaymentAssertions";
 import { Config } from "../../src/config/Config";
 import { UserAssertions } from "tests/assertions/UserAssertions";
+import * as allure from "allure-js-commons";
 
 test.describe("Payments tests with cart disabled (go straight to payment)", () => {
     const adminUser = Config.getMainTestUser();
@@ -13,17 +14,22 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
     const couponCode = Config.getCouponCode();
 
     test.beforeEach("Navigate to school", async ({ navigation, schoolHomePage, coursesPage, paymentPage }) => {
-        await navigation.navigateToSchool(Config.getTestSchoolName());
-        await schoolHomePage.clickCoursesLink();
-        await coursesPage.proceedToCheckoutForCourseWithId(testCourseId);
+        await allure.step("Set user data in payments page", async () => {
+            await navigation.navigateToSchool(Config.getTestSchoolName());
+            await schoolHomePage.clickCoursesLink();
+            await coursesPage.proceedToCheckoutForCourseWithId(testCourseId);
 
-        await paymentPage.setUserData(secondaryTestUser);
+            await paymentPage.setUserData(secondaryTestUser);
+        });
+
     });
 
     test("Perform simple payment happy path without coupon", async ({ page, transactionsPage, adminPage, navigation, usersPage, productsPage, paymentPage, thankYouPage }) => {
         await paymentPage.clickBuy();
 
-        await PaymentAssertions.verifyThankYouPage(thankYouPage);
+        await allure.step("Quick verifications in thank you page", async () => {
+            await PaymentAssertions.verifyThankYouPage(thankYouPage);
+        });
 
 
         await navigation.sessionHandler.logoutFromThankYouPage();
@@ -32,13 +38,20 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
         await page.waitForTimeout(10000);//since playwright moves too fast, some syncing with backend seems to be required here, adding this wait to remove flakiness
 
         await usersPage.clickUserByEmail(secondaryTestUser.email);
-        await UserAssertions.verifyUserDetailsOverview(usersPage, secondaryTestUser);
+        await allure.step("Verify users overview page", async () => {
+            await UserAssertions.verifyUserDetailsOverview(usersPage, secondaryTestUser);
+        });
 
-        await usersPage.clickProductsTab();
-        await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName, testCourseId);
+        await allure.step("Verify users products page", async () => {
+            await usersPage.clickProductsTab();
+            await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
+        });
 
-        await usersPage.clickTransactionsTab();
-        await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseInitialPrice);
+        await allure.step("Verify users transactions page", async () => {
+            await usersPage.clickTransactionsTab();
+            await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseInitialPrice);
+        });
+
     });
 
     test("Perform simple payment happy path with coupon", async ({ page, transactionsPage, adminPage, navigation, usersPage, productsPage, paymentPage, thankYouPage }) => {
@@ -49,7 +62,9 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
         await expect(paymentPage.totalAmount).toHaveText("€" + testCourseDiscountedPrice);
         await paymentPage.clickBuy();
 
-        await PaymentAssertions.verifyThankYouPage(thankYouPage);
+        await allure.step("Quick verifications in thank you page", async () => {
+            await PaymentAssertions.verifyThankYouPage(thankYouPage);
+        });
 
         await navigation.sessionHandler.logoutFromThankYouPage();
         await navigation.sessionHandler.loginFromSchoolPage(adminUser.email, adminUser.password);
@@ -57,12 +72,18 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
         await page.waitForTimeout(10000);//since playwright moves too fast, some syncing with backend seems to be required here, adding this wait to remove flakiness
 
         await usersPage.clickUserByEmail(secondaryTestUser.email);
-        await UserAssertions.verifyUserDetailsOverview(usersPage, secondaryTestUser);
+        await allure.step("Verify users overview page", async () => {
+            await UserAssertions.verifyUserDetailsOverview(usersPage, secondaryTestUser);
+        });
 
-        await usersPage.clickProductsTab();
-        await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
+        await allure.step("Verify users products page", async () => {
+            await usersPage.clickProductsTab();
+            await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
+        });
 
-        await usersPage.clickTransactionsTab();
-        await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseDiscountedPrice);
+        await allure.step("Verify users transactions page", async () => {
+            await usersPage.clickTransactionsTab();
+            await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseDiscountedPrice);
+        });
     });
 });

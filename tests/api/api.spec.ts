@@ -1,13 +1,13 @@
 import { test, expect } from "../fixtures/test";
 import { request, APIRequestContext } from "@playwright/test";
-import { Config } from "../../src/config/Config";
+import { TestParams } from "../../src/config/TestParams";
 import { UserPayloadFactory } from "src/api/UserPayloadFactory";
 import * as allure from "allure-js-commons";
 
 
 test.describe("Api tests", () => {
-    const admin = Config.getMainTestUser();
-    const storageStatePath = Config.getStorageStatePath();
+    const admin = TestParams.getMainTestUser();
+    const storageStatePath = TestParams.getStorageStatePath();
     let apiContext: APIRequestContext;
 
 
@@ -22,13 +22,12 @@ test.describe("Api tests", () => {
 
             await page.context().storageState({ path: storageStatePath });
         });
-
     });
 
     test("Create a user via api call", async () => {
         allure.step("Create the user in POST/api/author/create_user and assert the response", async () => {
             apiContext = await request.newContext({
-                baseURL: Config.getDemoSchoolUrl(),
+                baseURL: TestParams.getDemoSchoolUrl(),
                 storageState: storageStatePath,
                 extraHTTPHeaders: {
                     Accept: "application/json",

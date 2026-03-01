@@ -2,6 +2,7 @@ import { Page } from "@playwright/test";
 import * as business from "@business";
 import * as pages from "@pages";
 import * as components from "@components";
+import * as config from "@config"
 
 export class SessionHandler {
 
@@ -29,7 +30,7 @@ export class SessionHandler {
 
     async loginFromSchoolPage(username: string, password: string): Promise<void> {
         const navigation = new business.NavigationHandler(this.page);
-        await navigation.navigateToSchool(process.env.DEMO_SCHOOL_NAME!);
+        await navigation.navigateToSchool(config.TestParams.getTestSchoolName());
 
         const schoolHomePage = new pages.SchoolHomePage(this.page);
         await schoolHomePage.clickSignInButton();

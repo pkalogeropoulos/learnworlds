@@ -1,10 +1,10 @@
 import { CreateUserPayload } from "./CreateUserPayload";
-import { Config } from "@config";
+import { TestParams } from "@config";
 
 export class UserPayloadFactory {
 
     static getDefaultUserPayload(): CreateUserPayload  {
-        const courseId = Config.getTestCourseId();
+        const courseId = TestParams.getTestCourseId();
 
         const payload: CreateUserPayload = {
             custom_fields: {},

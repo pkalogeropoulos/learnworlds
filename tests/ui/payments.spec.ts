@@ -1,21 +1,21 @@
 import { test, expect } from "../fixtures/test";
 import { PaymentAssertions } from "tests/assertions/PaymentAssertions";
-import { Config } from "../../src/config/Config";
+import { TestParams } from "../../src/config/TestParams";
 import { UserAssertions } from "tests/assertions/UserAssertions";
 import * as allure from "allure-js-commons";
 
 test.describe("Payments tests with cart disabled (go straight to payment)", () => {
-    const adminUser = Config.getMainTestUser();
-    const secondaryTestUser = Config.getSecondaryTestUser();
-    const testCourseId = Config.getTestCourseId();
-    const testCourseName = Config.getTestCourseName();
-    const testCourseInitialPrice = Config.getCourseInitialPrice();
-    const testCourseDiscountedPrice = Config.getDiscountCouponPrice();
-    const couponCode = Config.getCouponCode();
+    const adminUser = TestParams.getMainTestUser();
+    const secondaryTestUser = TestParams.getSecondaryTestUser();
+    const testCourseId = TestParams.getTestCourseId();
+    const testCourseName = TestParams.getTestCourseName();
+    const testCourseInitialPrice = TestParams.getCourseInitialPrice();
+    const testCourseDiscountedPrice = TestParams.getDiscountCouponPrice();
+    const couponCode = TestParams.getCouponCode();
 
     test.beforeEach("Navigate to school", async ({ navigation, schoolHomePage, coursesPage, paymentPage }) => {
         await allure.step("Set user data in payments page", async () => {
-            await navigation.navigateToSchool(Config.getTestSchoolName());
+            await navigation.navigateToSchool(TestParams.getTestSchoolName());
             await schoolHomePage.clickCoursesLink();
             await coursesPage.proceedToCheckoutForCourseWithId(testCourseId);
 

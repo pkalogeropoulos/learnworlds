@@ -1,6 +1,6 @@
 import { User } from "./User";
 
-export class Config {
+export class TestParams {
 
 
     static getMainTestUser(): User {

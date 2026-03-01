@@ -1,12 +1,12 @@
 import { test, expect } from "../fixtures/test";
 import { PaymentAssertions } from "tests/assertions/PaymentAssertions";
-import { TestParams } from "../../src/config/TestParams";
+import { TestParams, User } from "../../src/config/";
 import { UserAssertions } from "tests/assertions/UserAssertions";
 import * as allure from "allure-js-commons";
 
 test.describe("Payments tests with cart disabled (go straight to payment)", () => {
     const adminUser = TestParams.getMainTestUser();
-    const secondaryTestUser = TestParams.getSecondaryTestUser();
+    let secondaryTestUser: User;
     const testCourseId = TestParams.getTestCourseId();
     const testCourseName = TestParams.getTestCourseName();
     const testCourseInitialPrice = TestParams.getCourseInitialPrice();
@@ -15,6 +15,7 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
 
     test.beforeEach("Navigate to school", async ({ navigation, schoolHomePage, coursesPage, paymentPage }) => {
         await allure.step("Set user data in payments page", async () => {
+            secondaryTestUser = TestParams.getSecondaryTestUser();
             await navigation.navigateToSchool(TestParams.getTestSchoolName());
             await schoolHomePage.clickCoursesLink();
             await coursesPage.proceedToCheckoutForCourseWithId(testCourseId);
@@ -42,14 +43,14 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
             await UserAssertions.verifyUserDetailsOverview(usersPage, secondaryTestUser);
         });
 
-        await allure.step("Verify users products page", async () => {
-            await usersPage.clickProductsTab();
-            await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
-        });
-
         await allure.step("Verify users transactions page", async () => {
             await usersPage.clickTransactionsTab();
             await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseInitialPrice);
+        });
+
+        await allure.step("Verify users products page", async () => {
+            await usersPage.clickProductsTab();
+            await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
         });
 
     });
@@ -74,16 +75,16 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
         await usersPage.clickUserByEmail(secondaryTestUser.email);
         await allure.step("Verify users overview page", async () => {
             await UserAssertions.verifyUserDetailsOverview(usersPage, secondaryTestUser);
+        });        
+
+        await allure.step("Verify users transactions page", async () => {
+            await usersPage.clickTransactionsTab();
+            await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseDiscountedPrice);
         });
 
         await allure.step("Verify users products page", async () => {
             await usersPage.clickProductsTab();
             await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
-        });
-
-        await allure.step("Verify users transactions page", async () => {
-            await usersPage.clickTransactionsTab();
-            await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseDiscountedPrice);
         });
     });
 });

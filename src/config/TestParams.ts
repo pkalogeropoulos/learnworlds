@@ -19,8 +19,8 @@ export class TestParams {
         const user: User = {
             name: "testName2",
             surname: "testSurname2",
-            email: "testUser+" + Math.floor((Math.random() * 1000) + 100) + "@gmail.com",
-            password: process.env.DEMO_PASS_02?.toString()!,
+            email: "testuser+" + Math.floor((Math.random() * 1000) + 100) + "@gmail.com",
+            password: "testPass123!",
             school: ""
         };
 

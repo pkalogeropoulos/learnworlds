@@ -37,7 +37,6 @@ export class SessionHandler {
         await schoolHomePage.setUsername(username);
         await schoolHomePage.setPassword(password);
         await schoolHomePage.clickLoginButton();
-        await this.page.waitForTimeout(3000);//not the best option, but if I do not put that wait here, the login is not performed correctly. Not sure why, would like to debug more.
     }
 
     async loginToAdminMenu(adminUser: config.User) {
@@ -48,7 +47,6 @@ export class SessionHandler {
         await schoolHomePage.setUsername(adminUser.email);
         await schoolHomePage.setPassword(adminUser.password);
         await schoolHomePage.clickLoginButton();
-        await this.page.waitForTimeout(3000);//not the best option, but if I do not put that wait here, the login is not performed correctly. Not sure why, would like to debug more.
    
     }
 

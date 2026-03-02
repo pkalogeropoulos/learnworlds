@@ -82,7 +82,7 @@ export default defineConfig({
     },
     {
       name: "api",
-      dependencies: ["setup"],  // 👈 THIS connects setup to api tests
+      dependencies: ["setup"],  // 👈 THIS connects setup to api tests, not used for now
       testMatch: "create-user.spec.ts",
     },
   ],

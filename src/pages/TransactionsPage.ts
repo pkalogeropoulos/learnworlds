@@ -29,6 +29,4 @@ export class TransactionsPage {
         const frame = await this.page.frameLocator("#contentHolder");
         return frame.getByText("€" + amountValue).isVisible();
     }
-
-
 }

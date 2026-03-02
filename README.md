@@ -1,6 +1,5 @@
 # 🚀 LearnWorlds - Assignment for QA Automation Lead Software Engineer
 
-
 ![License](https://img.shields.io/github/license/pkalogeropoulos/learnworlds)
 ![Issues](https://img.shields.io/github/issues/pkalogeropoulos/learnworlds)
 ![Stars](https://img.shields.io/github/stars/pkalogeropoulos/learnworlds?style=social)

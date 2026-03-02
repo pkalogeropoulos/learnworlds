@@ -57,6 +57,23 @@ learnworlds/
 └── LICENSE
 ```
 
+---
+
+## 📊 Allure Reporting
+
+This project integrates **Allure Reports** to provide rich, interactive test reporting with detailed insights into test execution.
+
+Allure helps visualize:
+
+- ✅ Test results
+- ❌ Failures & stack traces
+- 📎 Attachments (logs, screenshots, API responses)
+- ⏱ Execution time
+- 📈 Historical trends
+- 🧪 Test categorization (epics, features, stories)
+![Screenshot 2026-03-02 011221](https://github.com/user-attachments/assets/5cadafa7-d53f-452f-ab89-84f4e19216d0)
+
+---
 
 **Tests info**
 

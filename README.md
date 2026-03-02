@@ -43,6 +43,7 @@ Built with:
 ---
 
 🏗 Project Structure
+```
 learnworlds/
 │
 ├── src/                # Core source code
@@ -54,19 +55,13 @@ learnworlds/
 ├── tsconfig.json
 ├── README.md
 └── LICENSE
+```
 
 
-Tests info
+**Tests info**
 4 tests for ui and one for Api were created. 
 Tests for ui can accessed here: payments.spec.ts
 Api tests can be accessed here: api.spec.ts (user creation)
 
 All necessary test params can be found in env.local file. Note that you will need to set your own user and/or school if you want to expand this more.
 
-
-
-
-
-```bash
-git clone https://github.com/pkalogeropoulos/learnworlds.git
-cd learnworlds

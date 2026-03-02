@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/github/license/pkalogeropoulos/learnworlds)
 ![Issues](https://img.shields.io/github/issues/pkalogeropoulos/learnworlds)
 ![Stars](https://img.shields.io/github/stars/pkalogeropoulos/learnworlds?style=social)
-![E2E Tests](https://github.com/<your-user>/<repo>/actions/workflows/e2e.yml/badge.svg)
+![E2E Tests](https://github.com/pkalogeropoulos/learnworlds/actions/workflows/playwright.yml/badge.svg)
 
 ---
 

@@ -27,6 +27,30 @@ export class TestParams {
         return user;
     }
 
+    static getUserWithCoupon(): User {
+        const user: User = {
+            name: "testName2",
+            surname: "testSurname2",
+            email: process.env.DEMO_USER_WITH_COUPON!,
+            password: "testPass123!",
+            school: ""
+        };
+
+        return user;
+    }
+
+    static getUserWithoutCoupon(): User {
+        const user: User = {
+            name: "testName2",
+            surname: "testSurname2",
+            email: process.env.DEMO_USER_WITHOUT_COUPON!,
+            password: "testPass123!",
+            school: ""
+        };
+
+        return user;
+    }
+
     static getTestSchoolName(): string {
         return process.env.DEMO_SCHOOL_NAME?.toString()!;
     }

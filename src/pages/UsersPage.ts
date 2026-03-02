@@ -46,4 +46,9 @@ export class UsersPage {
         const frame = await this.page.frameLocator("#contentHolder");
         await expect(frame.locator(this.addUserButton)).toBeVisible();
     }
+
+    async searchForUser(user: string) {
+        const frame = await this.page.frameLocator("#contentHolder");
+        await frame.getByPlaceholder("Search", { exact: true }).fill(user);
+    }
 }

@@ -15,7 +15,7 @@ test.describe("Api tests", () => {
      * We could set this "login from ui" to setup/globalSetup or a worker fixture.
      * Since this is a standalone api test, we can do this in beforeAll method
      */
-    test.beforeAll("Login via ui", async ({ page, session }) => {
+    test.beforeEach("Login via ui", async ({ page, session }) => {
         await allure.step("Login via ui and set the storageState", async () => {
             await session.loginFromSchoolPage(admin.email, admin.password);
             await expect(page).toHaveURL(/\/author/i);
@@ -59,7 +59,7 @@ test.describe("Api tests", () => {
     });
 
     test.afterAll(async () => {
-        await apiContext.dispose();
+        if (apiContext) await apiContext.dispose();
     });
 
 })

@@ -13,7 +13,7 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
     const testCourseDiscountedPrice = TestParams.getDiscountCouponPrice();
     const couponCode = TestParams.getCouponCode();
 
-    test.beforeEach("Navigate to school", async ({ navigation, schoolHomePage, coursesPage, paymentPage }) => {
+    test("Perform simple payment happy path without coupon", async ({ page, schoolHomePage, coursesPage, transactionsPage, adminPage, navigation, usersPage, productsPage, paymentPage, thankYouPage }) => {
         await allure.step("Set user data in payments page", async () => {
             secondaryTestUser = TestParams.getSecondaryTestUser();
             await navigation.navigateToSchool(TestParams.getTestSchoolName());
@@ -23,39 +23,24 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
             await paymentPage.setUserData(secondaryTestUser);
         });
 
-    });
-
-    test("Perform simple payment happy path without coupon", async ({ page, transactionsPage, adminPage, navigation, usersPage, productsPage, paymentPage, thankYouPage }) => {
         await paymentPage.clickBuy();
 
         await allure.step("Quick verifications in thank you page", async () => {
             await PaymentAssertions.verifyThankYouPage(thankYouPage);
         });
 
-
-        await navigation.sessionHandler.logoutFromThankYouPage();
-        await navigation.sessionHandler.loginFromSchoolPage(adminUser.email, adminUser.password);
-        await adminPage.clickUsersTab();
-        await page.waitForTimeout(10000);//since playwright moves too fast, some syncing with backend seems to be required here, adding this wait to remove flakiness
-
-        await usersPage.clickUserByEmail(secondaryTestUser.email);
-        await allure.step("Verify users overview page", async () => {
-            await UserAssertions.verifyUserDetailsOverview(usersPage, secondaryTestUser);
-        });
-
-        await allure.step("Verify users transactions page", async () => {
-            await usersPage.clickTransactionsTab();
-            await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseInitialPrice);
-        });
-
-        await allure.step("Verify users products page", async () => {
-            await usersPage.clickProductsTab();
-            await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
-        });
-
     });
 
-    test("Perform simple payment happy path with coupon", async ({ page, transactionsPage, adminPage, navigation, usersPage, productsPage, paymentPage, thankYouPage }) => {
+    test("Perform simple payment happy path with coupon", async ({ page, schoolHomePage, coursesPage, transactionsPage, adminPage, navigation, usersPage, productsPage, paymentPage, thankYouPage }) => {
+        await allure.step("Set user data in payments page", async () => {
+            secondaryTestUser = TestParams.getSecondaryTestUser();
+            await navigation.navigateToSchool(TestParams.getTestSchoolName());
+            await schoolHomePage.clickCoursesLink();
+            await coursesPage.proceedToCheckoutForCourseWithId(testCourseId);
+
+            await paymentPage.setUserData(secondaryTestUser);
+        });
+
         await paymentPage.applyCoupon(couponCode);
 
         //perform a hard-stop assertion here, this could be enriched with more checks here
@@ -66,16 +51,18 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
         await allure.step("Quick verifications in thank you page", async () => {
             await PaymentAssertions.verifyThankYouPage(thankYouPage);
         });
+    });
 
-        await navigation.sessionHandler.logoutFromThankYouPage();
+    test("Verify user that performed payment without coupon", async ({ page, transactionsPage, adminPage, navigation, usersPage, productsPage }) => {
+        const userWithoutCoupon = TestParams.getUserWithoutCoupon();
         await navigation.sessionHandler.loginFromSchoolPage(adminUser.email, adminUser.password);
         await adminPage.clickUsersTab();
-        await page.waitForTimeout(10000);//since playwright moves too fast, some syncing with backend seems to be required here, adding this wait to remove flakiness
 
-        await usersPage.clickUserByEmail(secondaryTestUser.email);
+        await usersPage.searchForUser(userWithoutCoupon.email);
+        await usersPage.clickUserByEmail(userWithoutCoupon.email);
         await allure.step("Verify users overview page", async () => {
-            await UserAssertions.verifyUserDetailsOverview(usersPage, secondaryTestUser);
-        });        
+            await UserAssertions.verifyUserDetailsOverview(usersPage, userWithoutCoupon);
+        });
 
         await allure.step("Verify users transactions page", async () => {
             await usersPage.clickTransactionsTab();
@@ -87,4 +74,28 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
             await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
         });
     });
+
+    test("Verify user that performed payment with coupon", async ({ page, transactionsPage, adminPage, navigation, usersPage, productsPage }) => {
+        const userWithCoupon = TestParams.getUserWithCoupon();
+        await navigation.sessionHandler.loginFromSchoolPage(adminUser.email, adminUser.password);
+        await adminPage.clickUsersTab();
+
+        await usersPage.searchForUser(userWithCoupon.email);
+        await usersPage.clickUserByEmail(userWithCoupon.email);
+        await allure.step("Verify users overview page", async () => {
+            await UserAssertions.verifyUserDetailsOverview(usersPage, userWithCoupon);
+        });
+
+        await allure.step("Verify users transactions page", async () => {
+            await usersPage.clickTransactionsTab();
+            await UserAssertions.verifyUserDetailsTransactions(transactionsPage, testCourseDiscountedPrice);
+        });
+
+        await allure.step("Verify users products page", async () => {
+            await usersPage.clickProductsTab();
+            await UserAssertions.verifyUserDetailsProducts(productsPage, testCourseName);
+        });
+    });
+
+
 });

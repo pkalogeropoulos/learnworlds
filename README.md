@@ -13,14 +13,6 @@
 
 LearnWorlds Toolkit is a clean, strongly-typed, and scalable TypeScript project designed to simplify interaction with LearnWorlds services.
 
-This project focuses on:
-
-- ⚡ Developer productivity
-- 🔌 Integration readiness
-- 🧱 Modular architecture
-- 🧪 Testability
-- 📈 Production scalability
-
 Built with:
 
 - **TypeScript**

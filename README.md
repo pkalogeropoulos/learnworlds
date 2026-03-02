@@ -59,9 +59,17 @@ learnworlds/
 
 
 **Tests info**
+
 4 tests for ui and one for Api were created. 
 Tests for ui can accessed here: payments.spec.ts
 Api tests can be accessed here: api.spec.ts (user creation)
 
 All necessary test params can be found in env.local file. Note that you will need to set your own user and/or school if you want to expand this more.
 
+
+**Deliverables found in Questions folder**
+
+- Test Plan document
+- Test Data strategy (Task 2)
+- A document with your team lead skills Q&A
+  

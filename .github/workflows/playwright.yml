@@ -12,18 +12,18 @@ jobs:
 
     # this is where we could use specific values for our tests, let's keep it simple for now with local runs
     env:
-      DEMO_COUPON_NAME=pkalogerop-coupon
-      DEMO_COURSE_INITIAL_PRICE=10
-      DEMO_COUPON_DISCOUNTED_PRICE=5
-      DEMO_SCHOOL_NAME=pkalogerop
-      DEMO_SCHOOL_URL=https://pkalogerop.learnworlds.com
-      DEMO_COURSE_NAME=Intro to Ai
-      DEMO_COURSE_ID=699e693a2a1dfdd7190737f2
-      DEMO_NAME_01=p.kalogeropouloss@gmail.com
-      DEMO_PASS_01=xy$xYPTirJmRNSZt@JzDF14*ra!&0%GepVWp.
-      DEMO_USER_WITH_COUPON=testuser+197@gmail.com
-      DEMO_USER_WITHOUT_COUPON=testuser+890@gmail.com
-      STORAGE_STATE_PATH=storage/admin.state.json
+      DEMO_COUPON_NAME:pkalogerop-coupon
+      DEMO_COURSE_INITIAL_PRICE:10
+      DEMO_COUPON_DISCOUNTED_PRICE:5
+      DEMO_SCHOOL_NAME:pkalogerop
+      DEMO_SCHOOL_URL:https://pkalogerop.learnworlds.com
+      DEMO_COURSE_NAME:Intro to Ai
+      DEMO_COURSE_ID:699e693a2a1dfdd7190737f2
+      DEMO_NAME_01:p.kalogeropouloss@gmail.com
+      DEMO_PASS_01:xy$xYPTirJmRNSZt@JzDF14*ra!&0%GepVWp.
+      DEMO_USER_WITH_COUPON:testuser+197@gmail.com
+      DEMO_USER_WITHOUT_COUPON:testuser+890@gmail.com
+      STORAGE_STATE_PATH:storage/admin.state.json
       
 
     steps:

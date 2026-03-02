@@ -53,7 +53,7 @@ learnworlds/
 
 ---
 
-## 📊 Allure Reporting
+## 📊 Reporting
 
 This project integrates **Allure Reports** to provide rich, interactive test reporting with detailed insights into test execution.
 
@@ -66,6 +66,10 @@ Allure helps visualize:
 - 📈 Historical trends
 - 🧪 Test categorization (epics, features, stories)
 ![Screenshot 2026-03-02 011221](https://github.com/user-attachments/assets/5cadafa7-d53f-452f-ab89-84f4e19216d0)
+
+Here is also the default HTML Reporter
+![reporter](https://github.com/user-attachments/assets/7b04e0ed-e3be-48bb-9c72-e2a639b7bd77)
+
 
 ---
 

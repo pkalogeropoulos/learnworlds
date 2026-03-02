@@ -17,7 +17,7 @@ test.describe("Api tests", () => {
      */
     test.beforeEach("Login via ui", async ({ page, session }) => {
         await allure.step("Login via ui and set the storageState", async () => {
-            await session.loginFromSchoolPage(admin.email, admin.password);
+            await session.loginToAdminMenu(admin);
             await expect(page).toHaveURL(/\/author/i);
 
             await page.context().storageState({ path: storageStatePath });

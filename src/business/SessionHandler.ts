@@ -40,6 +40,18 @@ export class SessionHandler {
         await this.page.waitForTimeout(3000);//not the best option, but if I do not put that wait here, the login is not performed correctly. Not sure why, would like to debug more.
     }
 
+    async loginToAdminMenu(adminUser: config.User) {
+        const navigation = new business.NavigationHandler(this.page);
+        await navigation.navigateToAdminDashboard(config.TestParams.getTestSchoolName());
+
+        const schoolHomePage = new pages.SchoolHomePage(this.page);
+        await schoolHomePage.setUsername(adminUser.email);
+        await schoolHomePage.setPassword(adminUser.password);
+        await schoolHomePage.clickLoginButton();
+        await this.page.waitForTimeout(3000);//not the best option, but if I do not put that wait here, the login is not performed correctly. Not sure why, would like to debug more.
+   
+    }
+
     async logout() {
         const home = new pages.HomePage(this.page);
         await home.goto();

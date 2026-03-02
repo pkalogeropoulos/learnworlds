@@ -21,6 +21,11 @@ export class NavigationHandler {
         await this.page.goto("https://" + schoolName + ".learnworlds.com", { waitUntil: "domcontentloaded" });
     }
 
+    async navigateToAdminDashboard(schoolName: string): Promise<void> {
+        //This url should be dynamic and fetched based on the current env. Keeping it simple for now for this demo.
+        await this.page.goto("https://" + schoolName + ".learnworlds.com/author/dashboard", { waitUntil: "domcontentloaded" });
+    }
+
     async navigateToUserWithEmail(adminUser: User, email: string) {
         await this.sessionHandler.loginFromSchoolPage(adminUser.email, adminUser.password);
         await this.page.waitForTimeout(3000);

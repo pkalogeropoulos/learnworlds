@@ -53,9 +53,9 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
         });
     });
 
-    test("Verify user that performed payment without coupon", async ({ page, transactionsPage, adminPage, navigation, usersPage, productsPage }) => {
+    test("Verify user that performed payment without coupon", async ({ transactionsPage, adminPage, navigation, usersPage, productsPage }) => {
         const userWithoutCoupon = TestParams.getUserWithoutCoupon();
-        await navigation.sessionHandler.loginFromSchoolPage(adminUser.email, adminUser.password);
+        await navigation.sessionHandler.loginToAdminMenu(adminUser);
         await adminPage.clickUsersTab();
 
         await usersPage.searchForUser(userWithoutCoupon.email);
@@ -75,9 +75,9 @@ test.describe("Payments tests with cart disabled (go straight to payment)", () =
         });
     });
 
-    test("Verify user that performed payment with coupon", async ({ page, transactionsPage, adminPage, navigation, usersPage, productsPage }) => {
+    test("Verify user that performed payment with coupon", async ({ transactionsPage, adminPage, navigation, usersPage, productsPage }) => {
         const userWithCoupon = TestParams.getUserWithCoupon();
-        await navigation.sessionHandler.loginFromSchoolPage(adminUser.email, adminUser.password);
+        await navigation.sessionHandler.loginToAdminMenu(adminUser);
         await adminPage.clickUsersTab();
 
         await usersPage.searchForUser(userWithCoupon.email);

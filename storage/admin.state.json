@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "_cfuvid",
-      "value": "A_ORxRp17FonZEronWZKWL722jkHOmT6R7KvkP.UooQ-1772411187027-0.0.1.1-604800000",
+      "value": "ESt3bwNB3UgSeVoeggdY3YsuTDRBuiraoXLpCJ_la.c-1772419378391-0.0.1.1-604800000",
       "domain": ".learnworlds.com",
       "path": "/",
       "expires": -1,
@@ -12,20 +12,20 @@
     },
     {
       "name": "lw_tokens",
-      "value": "%7B%22access_token%22%3A%22LGFgmIuT7cDnQgcWz3Q4khuIXZmbEhDepCwUDyDy%22%2C%22token_type%22%3A%22Bearer%22%2C%22expires_in%22%3A604800%2C%22refresh_token%22%3A%22uIk7GYt5wElHbfbgcH4guLqm11YzAmteOpgp8hR9%22%7D",
+      "value": "%7B%22access_token%22%3A%22YUz0eDxlOXwQR9CcFRymuzpgghzUTUQNzsGLKIIG%22%2C%22token_type%22%3A%22Bearer%22%2C%22expires_in%22%3A604800%2C%22refresh_token%22%3A%22M7ZPYSUzNAK7EpmSnjlAoLmYQutgv7qY7JIMiqsT%22%7D",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1773016019.651601,
+      "expires": 1773024191.950517,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "slim_session",
-      "value": "2qX8gs47FlAKaxHGL49VWCZELXWWAe8A9grPZ2Vo",
+      "value": "ZxCqzhTXud3dayQ3CKc13a9OjfftTZCjPpjclqAp",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1772627219.65179,
+      "expires": 1772635391.950645,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
@@ -35,26 +35,20 @@
       "value": "%7B%22aliased%22%3Atrue%7D",
       "domain": "pkalogerop.learnworlds.com",
       "path": "/",
-      "expires": 1788308817.279885,
+      "expires": 1788316991.197028,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
-    },
-    {
-      "name": "school",
-      "value": "{%22ping%22:1}",
-      "domain": "pkalogerop.learnworlds.com",
-      "path": "/",
-      "expires": 1772454419,
-      "httpOnly": false,
-      "secure": false,
-      "sameSite": "Lax"
     }
   ],
   "origins": [
     {
       "origin": "https://pkalogerop.learnworlds.com",
       "localStorage": [
+        {
+          "name": "anonymous_token",
+          "value": "{\"token\":\"69a4f93d342ba7936a27anon\",\"lastAccessed\":1772419390515}"
+        },
         {
           "name": "lwUserCart",
           "value": "{\"items\":[],\"lineItems\":[],\"coupons\":[],\"totals\":null}"
